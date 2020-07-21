@@ -1,18 +1,16 @@
-let Lum = [255, 170, 85]
-let X: number[] = []
-for (let var1 = 0; var1 <= 4; var1++) {
-    X.push(0)
-}
-while (true) {
-    for (let Y = 0; Y <= 4; Y++) {
-        for (let var2 = 0; var2 <= X[Y]; var2++) {
-            led.plotBrightness(Y, X[Y] - var2, Lum[var2])
-        }
-        if (X[Y] <= 7) {
-            X[Y] = X[Y] + 1
-        } else if (randint(0, 101) > 80) {
-            X[Y] = 0
+let X = 0
+let Y = 0
+basic.forever(function () {
+    X = randint(0, 4)
+    Y = randint(0, 4)
+    while (Y < 8) {
+        for (let var1 = 0; var1 <= 3; var1++) {
+            led.plotBrightness(X, Y, 255)
+            led.plotBrightness(X, Y - 1, 170)
+            led.plotBrightness(X, Y - 2, 85)
+            led.plotBrightness(X, Y - 3, 0)
+            Y += 1
+            basic.pause(200)
         }
     }
-    basic.pause(200)
-}
+})
